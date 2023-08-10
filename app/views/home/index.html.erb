@@ -1,0 +1,39 @@
+<br>
+<br>
+<div class="container">
+  <%= content_tag :h6, "Latitude : #{@output['latitude']}", class:"text-dark lead font-weight-bold" %>
+  <%= content_tag :h6, "Longitude : #{@output['longitude']}",class:"text-dark lead font-weight-bold" %>
+</div>
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <% @output['daily']['time'].each do |time| %>
+      <div class="col-md">
+        <%= content_tag :h6, "#{Date.parse(time).strftime('%A')}",class:"text-center"%>
+        <%= content_tag :h6, "#{Date.parse(time).strftime('%b %d,  %Y')}",class:"text-center"%>
+      </div>
+      <% end %>
+  </div>
+  <div class="row mt-1">
+    <% @output['daily']['temperature_2m_min'].each do |temp| %>
+      <div class="col-md">
+        <%= content_tag :h6, "Min temp : #{temp} #{@output['daily_units']['temperature_2m_min']}",class:"text-center"%>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <% @output['daily']['temperature_2m_max'].each do |temp| %>
+      <div class="col-md">
+        <%= content_tag :h6, "Max temp : #{temp} #{@output['daily_units']['temperature_2m_max']}",class:"text-center"%>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <% @output['daily']['windspeed_10m_max'].each do |wind| %>
+      <div class="col-md">
+        <%= content_tag :h6, "Wind : #{wind} #{@output['daily_units']['windspeed_10m_max']}",class:"text-center"%>
+      </div>
+    <% end %>
+  </div>
+</div>
